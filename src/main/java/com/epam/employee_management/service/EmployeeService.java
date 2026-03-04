@@ -76,9 +76,7 @@ public class EmployeeService {
      * @throws EmployeeNotFoundException if no employee exists with the given ID
      */
     public void deleteEmployee(Long id) {
-        if (!employeeRepository.existsById(id)) {
-            throw new EmployeeNotFoundException(id);
-        }
-        employeeRepository.deleteById(id);
+        Employee employee = getEmployeeById(id);
+        employeeRepository.delete(employee);
     }
 }
